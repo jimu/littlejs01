@@ -11,8 +11,8 @@
     npm i browser-sync
     npx browser-sync start --server --files '*.html', '*.js''
 
-    browser (use port reported by browser-sync instead of 3000)
-    http://192.168.254.234:3000/
+Browse to: `http://192.168.254.234:3000` *use port reported by browser-sync instead of 3000*
+
 
 ## Misc Development Notes
 - [Local development notes](docs/local_development_notes.md)
