@@ -19,3 +19,4 @@ browser (index.html):
   <!-- disables browser cache on not only this index file, but scripts and images as well -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 ```
+[Local develoment notes](docs/local_development_notes.txt)
