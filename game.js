@@ -36,12 +36,13 @@ function gameUpdatePost()
 ///////////////////////////////////////////////////////////////////////////////
 function gameRender()
 {
-    // called before objects are rendered
-    // draw any background effects that appear behind objects
+  // called before objects are rendered
+  // draw any background effects that appear behind objects
   // drawTile(vec2(21,5), vec2(4.5), tile(3,128));
-    drawTile(vec2(-20, 0), vec2(21), tile(1,32, 2));
-    drawTile(vec2(  0, 8), vec2(15), tile(1,32, 1));
-    drawTile(vec2(  0,-8), vec2(15), tile(1,32, 0));
+  drawRect(cameraPos, vec2(100), new Color(.7,.7,.7));
+  drawTile(vec2(-20, 0), vec2(21), tile(1,32, 2));
+  drawTile(vec2(  0, 8), vec2(15), tile(1,32, 1));
+  drawTile(vec2(  0,-8), vec2(15), tile(1,32, 0));
 }
 
 ///////////////////////////////////////////////////////////////////////////////

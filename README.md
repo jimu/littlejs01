@@ -11,3 +11,11 @@
 ## Contact
 - email: gamejam _AT_ jimu _DOT_ net
 - discord: jimu2751
+
+## Dev Tips
+### disable caching
+browser (index.html):
+```
+  <!-- disables browser cache on not only this index file, but scripts and images as well -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+```

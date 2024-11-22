@@ -1,0 +1,14 @@
+apache
+
+  sudo  chcon -t httpd_sys_content_t images/* dist/*
+  sudo  chcon -t httpd_sys_content_t . images/* dist/*
+
+  BROWSER:  https://osaka/littlejs01/
+
+browser-sync
+
+  sudo firewall-cmd --add-port 3000-3001/tcp
+  npm i browser-sync
+  npx browser-sync start --server --files '*.html', '*.js'
+
+  BROWSER:  http://192.168.254.234:3000/
