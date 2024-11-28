@@ -38,7 +38,7 @@ function gameInit() {
 */
 
   const boardTileInfo = tile(0, vec2(31,34));
-  new LittleJS.EngineObject(vec2(0,0.40), vec2(4), boardTileInfo)
+  new LittleJS.EngineObject(vec2(-0.55,0.40), vec2(4.8), boardTileInfo)
 
   const xTileInfo = tile(5, vec2(7,7));
   const oTileInfo = tile(6, vec2(7,7));
