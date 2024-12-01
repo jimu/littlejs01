@@ -5,10 +5,10 @@ window.l = LittleJS;
 
 function gameInit() {
   const boardTileInfo = tile(0, vec2(132,196));
-  new LittleJS.EngineObject(vec2(0,0), vec2(8), boardTileInfo)
+  new LittleJS.EngineObject(vec2(0,0), vec2(16/24*8, 8), boardTileInfo)
 
   const pawnTileInfo = tile(9, vec2(16,24));
-  new LittleJS.EngineObject(vec2(1,2).subtract(vec2(0.5,0.5)), vec2(1), pawnTileInfo)
+  new LittleJS.EngineObject(vec2(1,2).subtract(vec2(0.5,0.5)), vec2(16/24, 1), pawnTileInfo)
 
   LittleJS.setCameraScale(64);
 }
