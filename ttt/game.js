@@ -15,8 +15,6 @@ const TITLE_Y = 60;
 const GRID_SIZE = vec2(1,1);  // related to tileCollisionSize in that this is the default size of all TileLayer's
 const TILE_INDEX_SQUARE = 10;
 
-var o;
-
 //-----------------------------------------------------------------------------
 function drawBoard() {
 }
@@ -25,42 +23,48 @@ function drawTitle() {
   LittleJS.drawTextScreen(TITLE, vec2(LittleJS.mainCanvasSize.x/2, TITLE_Y), TITLE_SIZE);
 }
 
+//////////////////////////////////////////////////////////////////////////////
+/*
+function gameInit7() {
+  // base scale is piece width (7)
+  const boardTileInfo = tile(0, vec2(31,34));
+  const xTileInfo = tile(5, vec2(7,7));
+  const oTileInfo = tile(6, vec2(7,7));
+
+  const boardScale  = vec2(31/7, 34/7)
+  const boardOffset = vec2(0, 5/7/2)  // board is 5 pixels wider than high.  Global scale is 7 pixel. piece height. offset is half differene.
+  const pieceOffset = 10/7            // pieces are 10 pixels away from each other (piece width + 2 pixels padding + 1 pixel border
+
+  //new LittleJS.EngineObject(boardOffset, boardScale, boardTileInfo)
+  //new LittleJS.EngineObject(vec2(pieceOffset, 0), vec2(1), xTileInfo)
+  //new LittleJS.EngineObject(vec2(pieceOffset, pieceOffset), vec2(1), xTileInfo)
+  window.o = new LittleJS.EngineObject(vec2(-pieceOffset, 0), vec2(1), oTileInfo)
+
+  LittleJS.setCameraScale(128);
+}*/
+
 ///////////////////////////////////////////////////////////////////////////////
 function gameInit() {
-/*
-  const boardTileInfo = tile(0, vec2(31,34));
-  new LittleJS.EngineObject(vec2(0,0.40), vec2(1), boardTileInfo)
+  // base scale is piece offset (10)
+  const boardSize = vec2(31, 34);
+  const pieceSize = vec2(7, 7);
 
-  const xTileInfo = tile(5, vec2(7,7));
-  const oTileInfo = tile(6, vec2(7,7));
-  new LittleJS.EngineObject(vec2(0,1/34), vec2(7/31), xTileInfo)
-  new LittleJS.EngineObject(vec2(1,1/34), vec2(7/31), oTileInfo)
-*/
+  const boardTileInfo = tile(0, boardSize);
+  const xTileInfo = tile(5, pieceSize);
+  const oTileInfo = tile(6, pieceSize);
 
-  const boardTileInfo = tile(0, vec2(31,34));
-  new LittleJS.EngineObject(vec2(-0.55,0.40), vec2(4.8), boardTileInfo)
+  const boardOffset = vec2(0, 5/2)  // board is 5 pixels wider than high. Offset is half differene.
+  const pieceOffset = 10            // pieces are 10 pixels away from each other (piece width + 2 pixels padding + 1 pixel border
 
-  const xTileInfo = tile(5, vec2(7,7));
-  const oTileInfo = tile(6, vec2(7,7));
+  new LittleJS.EngineObject(boardOffset, boardSize, boardTileInfo)
+  // new LittleJS.EngineObject(vec2(pieceOffset, 0), pieceSize, xTileInfo)
+  // new LittleJS.EngineObject(vec2(pieceOffset, pieceOffset), pieceSize, xTileInfo)
+  // new LittleJS.EngineObject(vec2(-pieceOffset, 0), pieceSize, xTileInfo)
+  // new LittleJS.EngineObject(vec2(0,0), pieceSize, oTileInfo)
 
-  //new LittleJS.EngineObject(vec2(0,1/34), vec2(7/31), xTileInfo)
-  new LittleJS.EngineObject(vec2(1,1/34), vec2(1), oTileInfo)
+  window.o = new LittleJS.EngineObject(vec2(0,pieceOffset), pieceSize, xTileInfo)
 
-  //const theTileLayer = new LittleJS.TileLayer(vec2(), vec2(1), boardTileInfo);
-  //const tilelayerdata = new LittleJS.TileLayerData(0);
-
-  //theTileLayer.setData(vec2(), tilelayerdata);
-  //theTileLayer.redraw();
-  //new LittleJS.EngineObject(vec2(1,0), vec2(1), boardTileInfo)
-  //new LittleJS.EngineObject(vec2(2,1), vec2(1), boardTileInfo)
-    
-  //LittleJS.drawTile(vec2(0), vec2(1), boardTileInfo, undefined, 0, false, undefined, false, true, LittleJS.mainContext)
-
-  //LittleJS.setCameraPos(GRID_SIZE.scale(.5));
-  LittleJS.setCameraScale(64);
-
-  //const oTileInfo = tile(1, 7)
-  //o = new GameObject
+  LittleJS.setCameraScale(128/7);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -69,6 +73,11 @@ function gameUpdatePost() {
 
 ///////////////////////////////////////////////////////////////////////////////
 function gameUpdate() {
+  //const mouseIsOver = l.isOverlapping(l.screenToWorld(o.pos), o.size, l.mousePosScreen);
+  const mouseIsOver  = l.isOverlapping(l.worldToScreen(o.pos), o.size.scale(l.cameraScale), l.mousePosScreen);
+  const mouseIsOver2 = l.isOverlapping(o.pos, o.size, l.screenToWorld(l.mousePosScreen));
+  //console.log(`gameUpdate ${l.mouseWasPressed(0)} ms:${l.mousePosScreen} mw:${l.screenToWorld(l.mousePosScreen)} opos:${o.pos} opscreen:${l.worldToScreen(o.pos)} osize:${window.o.size} over:${mouseIsOver} owts:${l.worldToScreen(o.size)} camerascale:${l.cameraScale} ssize:${o.size.scale(l.cameraScale)}`)
+  console.log(`gameUpdate ${l.mouseWasPressed(0)} over:${mouseIsOver} over2:${mouseIsOver2}`)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
