@@ -21,4 +21,3 @@ Browse to: `http://192.168.254.234:3000` *use port reported by browser-sync inst
 ## Contact
 - email: gamejam _AT_ jimu _DOT_ net
 - discord: jimu2751
-
